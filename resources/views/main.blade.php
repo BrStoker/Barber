@@ -15,8 +15,7 @@
 <body>
 <div>
     @include('includes.navigation')
-
-{{--    @include('includes.get_started')--}}
+    @include('includes.get_started')
 {{--    @include('includes.history')--}}
 {{--    @include('includes.service')--}}
 
