@@ -30,3 +30,4 @@
 </div>
 <img src="{{asset('images/vector_7.png')}}" id="vector_7"/>
 <img src="{{asset('images/vector_8.png')}}" id="vector_8"/>
+</div>

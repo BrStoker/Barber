@@ -3,8 +3,8 @@
         style="color:#FBB400; font-style:normal; text-decoration:NONE; "> Provide</span>
 </div>
 
-<img src="{{asset('images/rectangle_6.png')}}" id="rectangle_6"/>
 <img src="{{asset('images/rectangle_9.png')}}" id="rectangle_9"/>
+<img src="{{asset('images/rectangle_6.png')}}" id="rectangle_6"/>
 <div id="rectangle_7"></div>
 <div id="rectangle_8"></div>
 <div id="group_ek4">

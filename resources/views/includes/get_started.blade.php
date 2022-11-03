@@ -1,6 +1,6 @@
 <div id="hairstyle_reflects_the_personality_inside_you">
-    <span style="font-style:normal; text-decoration:NONE; ">Hairstyle</span><span
-        style="color:#163561; font-style:normal; text-decoration:NONE; "> Reflects The Personality Inside You</span>
+    <span style="font: Catamaran; font-style:normal; text-decoration:NONE; ">Hairstyle</span><span
+        style="font: Catamaran; color:#163561; font-style:normal; text-decoration:NONE; "> Reflects The Personality Inside You</span>
 </div>
 
 <div
@@ -9,10 +9,10 @@
     at.
 </div>
 <div id="group_2">
-    <div id="rectangle_4"></div>
-    <div id="rectangle_2"></div>
+{{--    <div id="rectangle_4"></div>--}}
+{{--    <div id="rectangle_2"></div>--}}
     <div id="get_started">
-        Get Started
+        <button type="button" class="btn btn-primary btn-lg">Get Started</button>
     </div>
 
 </div>

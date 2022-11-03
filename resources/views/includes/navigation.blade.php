@@ -1,45 +1,72 @@
-<div id="logo">
-    <div id="arber">
-        arber
-    </div>
-</div>
+<header>
+    <div class="content-container">
+        <div class="header_wrapper">
+            <div class="nav-wrapper">
+                <a href="{{route('index')}}" class="header_logo">
+                    <img src="{{asset('images/logo.svg')}}" id="vector_ek4"/>
+                </a>
+                <nav class="nav">
+                    <ul class="list">
+                        <li class="list-item"><a class="list-item-link active" href="{{route('index')}}"><span>Home</span></a></li>
+                        <li class="list-item"><a class="list-item-link" href="/history"><span>History</span></a></li>
+                        <li class="list-item"><a class="list-item-link" href="/service"><span>Service</span></a></li>
+                        <li class="list-item"><a class="list-item-link" href="/gallery"><span>Gallery</span></a></li>
+                    </ul>
+                </nav>
+            </div>
 
-<div id="scissors_1">
-    <div id="group">
-        <div id="group_ek1">
-            <img src="{{asset('images/vector_ek4.png')}}" id="vector_ek4"/>
+            <div class="control-bar">
+                <a href="/profile">
+                    <img src="{{asset('images/profile-icon.svg')}}"/>
+                </a>
+                <a href="#">
+                    <img src="{{asset('images/notification-icon.svg')}}"/>
+                </a>
+                <button type="button" class="btn btn-primary btn-lg main-button">Appointment</button>
+            </div>
         </div>
     </div>
-</div>
-<div id="scissors_2">
+</header>
 
-</div>
 
-<div id="home">
-    <div id="rectangle_5"></div>
-    <div id="home_ek1">Home</div>
-    <div id="history">History</div>
-    <div id="service">Service</div>
-    <div id="gallary">Gallery</div>
-</div>
+{{--flex--}}
 
-<div id="right_button">
-    <div id="rectangle_3"></div>
-    <div id="rectangle_1"></div>
 
-    <div id="profile_1">
-        <img src="{{asset('images/vector.png')}}" id="vector"/>
-        <img src="{{asset('images/vector_ek1.png')}}" id="vector_ek1"/>
+{{--header--}}
+{{--    container--}}
+{{--        div--}}
 
-    </div>
 
-    <div id="notification_1">
-        <img src="{{asset('images/vector_ek2.png')}}" id="vector_ek2"/>
-        <img src="{{asset('images/vector_ek3.png')}}" id="vector_ek3"/>
-        <div id="ellipse_1"></div>
-        <div id="_2">2</div>
-    </div>
-</div>
-<div id="appointment">
-    Appointment
-</div>
+{{--body--}}
+{{--    header--}}
+{{--        div--}}
+{{--            a--}}
+{{--                svg--}}
+{{--            nav--}}
+{{--                ul--}}
+{{--                    li--}}
+{{--                        a--}}
+{{--        div--}}
+{{--            img--}}
+{{--            img--}}
+{{--            button--}}
+{{--    section--}}
+{{--        h1--}}
+{{--        p--}}
+{{--        button--}}
+{{--        // backgound-image - link--}}
+{{--    section--}}
+{{--        img--}}
+{{--        h1--}}
+{{--        p--}}
+{{--        button--}}
+{{--        Картинку добавить через before \ after у блока,--}}
+{{--    section--}}
+{{--       h2--}}
+{{--        ul--}}
+{{--            li--}}
+{{--                img--}}
+{{--                h3--}}
+{{--                p--}}
+
+
