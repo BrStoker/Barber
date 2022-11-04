@@ -138,3 +138,53 @@ h1 span {
     font-weight: bold;
     color: #FBB400;
 }
+
+.our-history{
+    background-image: url("../images/history-bg.svg");
+    height: 1200px;
+    background-repeat: no-repeat;
+}
+
+.our-history-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.history-wrap{
+    display: flex;
+    width: 968px;
+    flex-flow: row wrap;
+    align-content: space-around;
+
+}
+
+.our-history-image{
+    margin-left: 82px;
+}
+
+.our-history__title{
+    display: flex;
+    margin-left: 149px;
+    width: 526px;
+    font-weight: bold;
+    font-family: Catamaran;
+    flex-flow: row wrap;
+    gap: 35px;
+}
+
+.our-history__title-first-item  {
+    font-size: 75px;
+
+
+}
+.our-history__title-second-item{
+    color: #FBB400;
+    font-size: 75px;
+}
+
+.our-history__title-description{
+    font-size: 25px;
+    font-weight: normal;
+    width: 400px;
+    padding-top: 20px;
+}
