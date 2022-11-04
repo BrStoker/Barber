@@ -20,6 +20,7 @@
     @include('includes.history')
     @include('includes.service')
     @include('includes.gallery')
+    @include('includes.footer')
 
 </div>
 

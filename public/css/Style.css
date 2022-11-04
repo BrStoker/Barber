@@ -368,3 +368,47 @@ h1 span {
     align-self: center;
 }
 
+.footer-main{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/footer-bg.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 630px;
+    gap: 80px;
+}
+
+.footer-logo{
+    align-self: center;
+}
+
+.footer-copyright{
+    align-self: center;
+    color: #153461;
+    width: 526px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.footer-social{
+    display: flex;
+    width: 251px;
+    align-self: center;
+}
+
+.footer-social-list{
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.footer-line{
+    width: 1362px;
+    height: 0px;
+    left: 287px;
+    top: 5243px;
+
+    border: 1px solid #99BAED;
+    align-self: center;
+}
+
