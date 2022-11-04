@@ -296,3 +296,75 @@ h1 span {
     text-align: center;
 }
 
+.galery-main{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/galery-bg.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 1300px;
+}
+
+.galery-title{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.galery-title__first-item{
+    color: #163561;
+    font-weight: bold;
+    font-family: "Catamaran";
+    text-decoration: none;
+    font-size: 70px;
+}
+
+.galery-title__second-item{
+    color:#FBB400;
+    font-weight: bold;
+    font-family: "Catamaran";
+    text-decoration: none;
+    font-size: 70px;
+}
+
+.galery-nav{
+    display: flex;
+    gap: 37px;
+    flex-flow: wrap;
+    width: 1450px;
+    align-self: center;
+}
+
+.galery-nav-list{
+    display: flex;
+    gap: 37px;
+    flex-flow: wrap;
+    width: 1450px;
+    align-self: center;
+}
+
+.galery-nav-item{
+    background-image: url("../images/galery-item-bg.svg");
+    background-repeat: no-repeat;
+    list-style: none;
+    width: 435px;
+    height: 435px;
+    opacity: .6;
+}
+
+.galery-nav-item:hover{
+    background-image: url("../images/galery-item-bg.svg");
+    background-repeat: no-repeat;
+    /*border: 3px solid #5296FF;*/
+    list-style: none;
+    width: 435px;
+    height: 435px;
+    opacity: 1;
+}
+
+.gallery-button{
+    margin-top: 50px;
+    align-self: center;
+}
+

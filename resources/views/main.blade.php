@@ -19,6 +19,7 @@
     @include('includes.get_started')
     @include('includes.history')
     @include('includes.service')
+    @include('includes.gallery')
 
 </div>
 
