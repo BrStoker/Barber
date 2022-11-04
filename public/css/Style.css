@@ -141,7 +141,7 @@ h1 span {
 
 .our-history{
     background-image: url("../images/history-bg.svg");
-    height: 1200px;
+    height: 1000px;
     background-repeat: no-repeat;
 }
 
@@ -188,3 +188,111 @@ h1 span {
     width: 400px;
     padding-top: 20px;
 }
+
+.service-main{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/service-bg.svg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 1200px;
+}
+
+.service-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.service-title__first-item{
+    font-weight: bold;
+    font-family: "Catamaran";
+    text-decoration: none;
+    font-size: 70px;
+}
+
+.service-title__second-item{
+    color:#FBB400;
+    font-weight: bold;
+    text-decoration:NONE;
+    font-size: 70px;
+}
+
+.service-nav .service-nav-list{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.service-nav-item{
+    background-image: url("../images/Service-item-bg.svg");
+    background-repeat: no-repeat;
+    margin: 0;
+    list-style: none;
+    width: 441px;
+    height: 533px;
+    color: #163561;
+}
+.service-nav-item.active{
+    background-image: url("../images/service-item-active.svg");
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+.service-nav-item:hover{
+    background-image: url("../images/service-item-active.svg");
+    background-repeat: no-repeat;
+    color: #ffffff;
+
+}
+
+.service-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: "Catamaran";
+    height: 533px;
+
+}
+
+.service-item-ico{
+    display: flex;
+    background-image: url("../images/service-item-ico.png");
+    background-repeat: no-repeat;
+    width: 103px;
+    height: 128px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-item-ico .image{
+
+}
+
+.service-item-title{
+    font-weight: bold;
+    font-size: 45px;
+    align-self: center;
+
+}
+.service-item-title:hover{
+    font-weight: bold;
+    font-size: 45px;
+    align-self: center;
+    color: #ffffff;
+}
+.service-item-title.active{
+    font-weight: bold;
+    font-size: 45px;
+    align-self: center;
+}
+
+.service-item-description{
+    width: 359px;
+    font-size: 25px;
+    align-self: center;
+    text-align: center;
+}
+
