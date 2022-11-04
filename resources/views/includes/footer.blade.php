@@ -1,6 +1,6 @@
 <section class="footer-main">
     <a href="{{route('index')}}" class="footer-logo">
-        <img src="{{asset('images/logo.svg')}}"/>
+        <img src="{{asset('public/images/logo.svg')}}"/>
     </a>
     <span class="footer-copyright">It is a long established fact that a reader will be distracted by the readable</span>
     <nav class="footer-social">

@@ -1,6 +1,6 @@
 <section class="our-history">
     <div class="our-history-wrapper">
-        <img src="{{asset('images/_13126_1.png')}}" alt="our history" class="our-history-image">
+        <img src="{{asset('public/images/_13126_1.png')}}" alt="our history" class="our-history-image">
 
         <h2 class="our-history__title">
             <span class="our-history__title-first-item">Our</span>

@@ -3,7 +3,7 @@
         <div class="header_wrapper">
             <div class="nav-wrapper">
                 <a href="{{route('index')}}" class="header_logo">
-                    <img src="{{asset('images/logo.svg')}}"/>
+                    <img src="{{asset('public/images/logo.svg')}}"/>
                 </a>
                 <nav class="nav">
                     <ul class="list">
@@ -17,10 +17,10 @@
 
             <div class="control-bar">
                 <a href="/profile">
-                    <img src="{{asset('images/profile-icon.svg')}}"/>
+                    <img src="{{asset('public/images/profile-icon.svg')}}"/>
                 </a>
                 <a href="#">
-                    <img src="{{asset('images/notification-icon.svg')}}"/>
+                    <img src="{{asset('public/images/notification-icon.svg')}}"/>
                 </a>
                 <button type="button" class="btn btn-primary btn-lg main-button">Appointment</button>
             </div>
