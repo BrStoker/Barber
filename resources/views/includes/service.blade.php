@@ -8,7 +8,7 @@
             <li class="service-nav-item active">
                 <div class="service-item">
                     <div class="service-item-ico">
-                        <img src="{{asset('public/images/scissors.svg')}}">
+                        <img src="{{asset('/images/scissors.svg')}}">
                     </div>
                     <span class="service-item-title active">Hair Cut</span>
                     <span class="service-item-description">long established fact that a reacted by the readable content of when looking at.</span>
@@ -17,7 +17,7 @@
             <li class="service-nav-item">
                 <div class="service-item">
                     <div class="service-item-ico">
-                        <img src="{{asset('public/images/electric-razor.svg')}}">
+                        <img src="{{asset('/images/electric-razor.svg')}}">
                     </div>
                     <span class="service-item-title">Beard Cut</span>
                     <span class="service-item-description">long established fact that a reacted by the readable content of when looking at.</span>
@@ -26,7 +26,7 @@
             <li class="service-nav-item">
                 <div class="service-item">
                     <div class="service-item-ico">
-                        <img src="{{asset('public/images/cleanser.svg')}}">
+                        <img src="{{asset('/images/cleanser.svg')}}">
                     </div>
                     <span class="service-item-title">Facial Pack</span>
                     <span class="service-item-description">long established fact that a reacted by the readable content of when looking at.</span>
