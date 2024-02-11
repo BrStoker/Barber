@@ -122,6 +122,8 @@
       <path value="$PROJECT_DIR$/vendor/backpack/pro" />
       <path value="$PROJECT_DIR$/vendor/backpack/permissionmanager" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/vendor/carbonphp/carbon-doctrine-types" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
