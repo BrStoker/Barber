@@ -7,7 +7,7 @@ SectionElement(classCss="galery-main")
         ul(class="galery-nav-list")
             li(class="galery-nav-item" v-for="(item, index) in images" :key="index")
                 ImageElement(:src="item.image")
-    button(class="btn btn-primary btn-lg main-button gallery-button" @click="viewGallery") {{'Больше фото'}}
+    button(class="btn btn-primary btn-lg main-button gallery-button" @click="viewGallery" v-if="env == 'main'") {{'Больше фото'}}
 </template>
 
 <script>
@@ -18,6 +18,7 @@ import NavElement from "@/js/components/elements/Nav.vue";
 
 export default {
     name: "Gallery",
+    props: ['env'],
     data(){
         return{
             images:[

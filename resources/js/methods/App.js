@@ -15,8 +15,6 @@ export default{
 
         let store = this.$store.state.data.app
 
-        // let StoreArticle = this.$store.state.schemas.addArticle
-
         let userStore = store.user.data
 
         if(_.has(appData, 'user') == true && appData.user != null){
@@ -32,6 +30,18 @@ export default{
             }
 
             store.user.auth = true
+
+        }
+
+        if(_.has(appData, 'services') == true && appData != null){
+
+            for(let key in appData.services){
+                if(appData.services[key] != undefined){
+
+                    this.$store.state.data.app.services[key] = appData.services[key]
+
+                }
+            }
 
         }
 

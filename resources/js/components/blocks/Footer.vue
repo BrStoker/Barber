@@ -2,7 +2,7 @@
 SectionElement(classCss="footer-main")
     LinkElement(classCss="footer-logo" :href="links.main")
         ImageElement(:src="logo")
-    SpanElement(classCss="footer-copyright") {{'Мы не просто создаем образы – мы воплощаем вашу индивидуальность в каждой линии, волосе и моменте ухода за лицом. Откройте двери в мир утонченного стиля и заботы о себе, где натуральная красота и индивидуальность становятся главными акцентами. Доверьтесь нам, и давайте вместе создадим неповторимый образ и раскроем вашу уникальность.'}}
+    SpanElement(classCss="footer-copyright" v-if="env == 'main'") {{'Мы не просто создаем образы – мы воплощаем вашу индивидуальность в каждой линии, волосе и моменте ухода за лицом. Откройте двери в мир утонченного стиля и заботы о себе, где натуральная красота и индивидуальность становятся главными акцентами. Доверьтесь нам, и давайте вместе создадим неповторимый образ и раскроем вашу уникальность.'}}
     NavElement(classCss="footer-social")
         ul(class="footer-social-list")
             li(class="footer-social-item" v-for="(item, index) in socials" :key="index")
@@ -22,6 +22,7 @@ import NavElement from "@/js/components/elements/Nav";
 import DivElement from "@/js/components/elements/Div.vue";
 export default {
     name: "Footer",
+    props:['env'],
     data(){
         return{
             links:{

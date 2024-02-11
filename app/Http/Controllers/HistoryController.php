@@ -1,19 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class HistoryController extends Controller
 {
+
     public function index(){
         $user = null;
-        $user = parent::getUser();
         $currentUser = \Auth::user();
-        $services = \App\Models\Service::where('active', 2)->get();
-        if($services->count() != 0){
-            $services->only(['id', 'name', 'image', 'preview', 'description', 'cost']);
-        }
         if($currentUser){
             $user = [
                 'first_name' => $currentUser->first_name,
@@ -23,12 +19,12 @@ class MainController extends Controller
             ];
         }
 
-
-        return view('main', [
+        return view('history', [
             'data' => json_encode([
-                'user' => $user,
-                'services' => $services
+                'user' => $user
             ])
         ]);
     }
+
+
 }

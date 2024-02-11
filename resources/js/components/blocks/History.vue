@@ -6,7 +6,7 @@
                 SpanElement(classCss="our-history__title-first-item") {{'Наша'}}
                 SpanElement(classCss="our-history__title-second-item") {{'история'}}
                 SpanElement(classCss="our-history__title-description") {{'В нашей парикмахерской мы верим, что каждая прическа - это не просто стрижка, а уникальное выражение вашей индивидуальности. Мы стремимся создать не просто стиль, а историю, рассказанную вашими волосами.'}}
-                button(class="btn btn-primary btn-lg main-button" @click="learnMore") {{'Узнать больше'}}
+                button(class="btn btn-primary btn-lg main-button" @click="learnMore" v-if="env == 'main'") {{'Узнать больше'}}
 
 </template>
 
@@ -17,6 +17,7 @@ import ImageElement from "@/js/components/elements/Image";
 import SpanElement from "@/js/components/elements/Span";
 export default {
     name: "History",
+    props: ['env'],
     data(){
         return{
             historyImage: 'images/_13126_1.png'

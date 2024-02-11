@@ -19,6 +19,8 @@ Vue.use(Fragment.Plugin)
 
 
 Vue.component('index', require('@/js/components/pages/Index').default);
+Vue.component('history', require('@/js/components/pages/History').default);
+Vue.component('service', require('@/js/components/pages/Service').default);
 
 import Store from '@/js/store/Store'
 

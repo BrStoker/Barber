@@ -1,10 +1,7 @@
 <template lang="pug">
 DivElement(classCss="layout_ready-load" :class="modalShown()")
     Header
-    GetStartedBlock
-    HistoryBlock(:env="env")
     ServiceBlock
-    GalleryBlock(:env="env")
     FooterBlock(:env="env")
     ModalLayout
 </template>
@@ -22,11 +19,11 @@ import ModalLayout from "@/js/components/blocks/ModalLayout";
 import ComputedIndex from '@/js/computed/pages/Index'
 import AppMethods from "@/js/methods/App.js";
 export default {
-    name: "Index",
+    name: "Service",
     props: ['data'],
     data(){
         return {
-            env: 'main'
+            env: 'page'
         }
     },
     methods:{

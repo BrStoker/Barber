@@ -17,7 +17,8 @@ export default {
                 phone: '',
                 email: ''
             }
-        }
+        },
+        services: []
     },
     mutations: {
 
