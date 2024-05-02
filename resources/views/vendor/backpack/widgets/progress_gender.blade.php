@@ -1,6 +1,7 @@
 @php
   // defaults; backwards compatibility with Backpack 4.0 widgets
   $widget['wrapper']['class'] = $widget['wrapper']['class'] ?? $widget['wrapperClass'] ?? 'col-sm-6 col-lg-3';
+  
 @endphp
 
 @includeWhen(!empty($widget['wrapper']), 'backpack::widgets.inc.wrapper_start')
@@ -21,7 +22,7 @@
       @endif
 
       @if (isset($widget['hint']))
-              <small class="text-muted"><strong>Всего пользователей: </strong>{!! $widget['hint'] !!}</small>
+      <small class="text-muted">{!! $widget['hint'] !!}</small>
       @endif
     </div>
 

@@ -9,7 +9,7 @@ class ProgressNewUsersController
 
     public function __construct()
     {
-        dd($this);
+        echo 111;
     }
 
 }

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\SettingsRequest;
+use App\Http\Requests\OccupationRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class SettingsCrudController
+ * Class OccupationCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class SettingsCrudController extends CrudController
+class OccupationCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class SettingsCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Settings::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/settings');
-        CRUD::setEntityNameStrings('', 'Настройки сайта');
+        CRUD::setModel(\App\Models\Occupation::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/occupation');
+        CRUD::setEntityNameStrings('', 'профессии');
     }
 
     /**
@@ -39,35 +39,31 @@ class SettingsCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setColumns([
-            [
-                'name' => 'id',
-                'label' => '#',
-                'type' => 'html'
-            ],
-            [
-                'name' => 'name',
-                'label' => 'Наименование',
-                'type' => 'text'
-            ],
-            [
-                'name' => 'value',
-                'label' => 'Значение',
-                'type' => 'html'
-            ],
+
+        CRUD::addColumns([
             [
                 'name' => 'active',
                 'label' => 'Статус',
                 'type' => 'select_from_array',
-                'options' => \App\Models\Settings::$settingStatuses
+                'options' => \App\Models\Occupation::$settingStatuses
+            ],
+            [
+                'name' => 'title',
+                'label' => 'Наименование',
+                'type' => 'closure',
+                'function' => function($entry){
+                    return $entry->title;
+                }
+            ],
+            [
+                'name' => 'description',
+                'label' => 'Описание',
+                'type' => 'closure',
+                'function' => function($entry){
+                    return $entry->description;
+                }
             ]
-
-    ]);
-//        CRUD::column('key');
-
-
-
-//        CRUD::column('active');
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -84,11 +80,11 @@ class SettingsCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        $entity = CRUD::getCurrentEntry();
+
         CRUD::setValidation([
             // 'name' => 'required|min:2',
         ]);
-
-        $entity = CRUD::getCurrentEntry();
 
         if(isset($entity->id))
         {
@@ -98,56 +94,54 @@ class SettingsCrudController extends CrudController
                 'value' => '<b>#' . $entity->id . '</b>'
             ]);
         }
+
         if($entity){
 
+            if($entity->created_at)
+            {
+                CRUD::addField([
+                    'name' => "html_created_at",
+                    'type'  => 'custom_html',
+                    'label' => 'Дата создания',
+                    'value' => '<b>Дата создания: '. $entity->created_at . '</b>'
+                ]);
+            }
 
             CRUD::addField([
-                'name' => "html_created_at",
-                'type'  => 'custom_html',
-                'label' => 'Дата создания',
-                'value' => '<b>Дата добавления: '. $entity->created_at . '</b>'
+                'name' => "active",
+                'label' => 'Статус',
+                'type'        => 'switch'
             ]);
+
             CRUD::addField([
-                'name' => 'active',
-                'type' => 'switch',
-                'label' => 'Активно'
-            ]);
-            CRUD::addField([
-                'name' => 'name',
-                'label' => 'Название',
+                'name' => 'title',
+                'label' => 'Наименование',
                 'type' => 'text'
             ]);
+
             CRUD::addField([
-                'name' => 'key',
-                'label' => 'Символьный код (уникальный)',
-                'type' => 'text'
-            ]);
-            CRUD::addField([
-                'name' => 'value',
-                'label' => 'Значение',
-                'type' => 'text'
+                'name' => 'description',
+                'label' => 'Описание',
+                'type' => 'summernote'
             ]);
 
         }
         CRUD::addField([
-            'name' => 'active',
-            'type' => 'switch',
-            'label' => 'Активно'
+            'name'  => "active",
+            'label' => 'Статус',
+            'type'  => 'switch'
         ]);
+
         CRUD::addField([
-            'name' => 'name',
-            'label' => 'Название',
+            'name' => 'title',
+            'label' => 'Наименование',
             'type' => 'text'
         ]);
+
         CRUD::addField([
-            'name' => 'key',
-            'label' => 'Символьный код (уникальный)',
-            'type' => 'text'
-        ]);
-        CRUD::addField([
-            'name' => 'value',
-            'label' => 'Значение',
-            'type' => 'text'
+            'name' => 'description',
+            'label' => 'Описание',
+            'type' => 'summernote'
         ]);
 
         /**

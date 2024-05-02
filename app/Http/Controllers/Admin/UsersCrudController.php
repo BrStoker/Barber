@@ -26,18 +26,52 @@ class UsersCrudController extends CrudController{
     }
 
     protected function setupListOperation(){
+        $allUsers = [
+            'type'  => 'progress',
+            'class'       => 'card text-white bg-success mb-2',
+            'value' => \App\Models\User::where('status', 2)->count(),
+            'description' => 'Новых пользователей за неделю',
+            'hint'        => \App\Models\User::all()->count()
+        ];
+        $maleUsers = [
+            'type'  => 'progress',
+            'class'       => 'card text-white bg-warning mb-2',
+            'value' => \App\Models\User::where('status', 2)->where('gender', 1)->count() . ' парень',
+            'description' => 'Новых пользователей за неделю',
+            'hint'        => \App\Models\User::all()->count()
+        ];
+        $femaleUsers = [
+            'type'  => 'progress',
+            'class'       => 'card text-white bg-primary mb-2',
+            'value' => \App\Models\User::where('status', 2)->where('gender', 2)->count() . ' девушка',
+            'description' => 'Новых пользователей за неделю',
+            'hint'        => \App\Models\User::all()->count()
+        ];
+        $unknownUsers = [
+            'type'  => 'progress',
+            'class'       => 'card text-white bg-danger mb-2',
+            'value' => \App\Models\User::where('status', 2)->where('gender', 0)->count() . ' пол не указан',
+            'description' => 'Новых пользователей за неделю',
+            'hint'        => \App\Models\User::all()->count()
+        ];
 
+        $card = [
+            'type' => 'div',
+            'class' => 'row',
+            'content' => [
+                $allUsers,
+                $maleUsers,
+                $femaleUsers,
+                $unknownUsers
+            ]
+        ];
+
+        Widget::add($card)->to('before_content');
         CRUD::setColumns([
 
             [
                 'name' => 'id',
                 'label' => '#'
-            ],
-            [
-                'name' => 'status',
-                'label' => 'Статус',
-                'type'  => 'select_from_array',
-                'options' => \App\Models\User::$statuses
             ],
             [
                 'name' => 'first_name',
@@ -56,16 +90,27 @@ class UsersCrudController extends CrudController{
                 }
             ],
             [
-                'name' => 'email',
-                'label' => 'Email'
+                'name' => 'gender',
+                'label'=> 'Пол',
+                'type' => 'select_from_array',
+                'options' => \App\Models\User::$gender
+            ],
+            [
+                'name' => 'status',
+                'label' => 'Статус',
+                'type'  => 'select_from_array',
+                'options' => \App\Models\User::$statuses
             ],
             [
                 'name' => 'phone',
                 'label' => 'Телефон'
+            ],
+            [
+                'name' => 'created_at',
+                'label' => 'Дата регистрации',
+                'type' => 'date',
+                'format' => 'd.MM.Y'
             ]
-
-
-
         ]);
 
 
@@ -119,6 +164,15 @@ class UsersCrudController extends CrudController{
                 'options'     => \App\Models\User::$statuses,
                 'allows_null' => false,
                 'allows_multiple' => false,
+                'default' => 0
+            ]);
+            CRUD::addField([
+                'name' => 'gender',
+                'label' => 'Пол',
+                'type' => 'select_from_array',
+                'options' => \App\Models\User::$gender,
+                'allow_null' => false,
+                'allow_multiple' => false,
                 'default' => 0
             ]);
             CRUD::addField([
