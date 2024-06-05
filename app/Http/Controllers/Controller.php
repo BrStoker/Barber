@@ -18,7 +18,7 @@ class Controller extends BaseController
 
         if($user){
 
-            return $user->only(['first_name', 'last_name', 'phone', 'email']);
+            return $user->only(['first_name', 'last_name', 'phone', 'email', 'image']);
 
         }else{
             return null;

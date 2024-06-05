@@ -15,7 +15,7 @@ header
                     ImageElement(:src="images.profile")
                 LinkElement(:href="links.notification" v-show="user.auth")
                     ImageElement(:src="images.notification")
-                button(class="btn btn-primary btn-lg main-button" @click="showAppointment") {{getButtonText()}}
+                LoginButton
                 //LanguageChange
 
 
@@ -28,6 +28,7 @@ import LinkElement from "@/js/components/elements/Link";
 import ImageElement from "@/js/components/elements/Image";
 import NavElement from "@/js/components/elements/Nav";
 import LanguageChange from "@/js/components/blocks/languageChange";
+import LoginButton from "@/js/components/blocks/LoginButton";
 
 
 export default {
@@ -72,18 +73,6 @@ export default {
             }else{
                 return ''
             }
-        },
-        showAppointment(e){
-            e.preventDefault()
-            if(this.user.auth){
-                location.href = '/logout'
-            }else{
-                this.$store.commit('showLoginForm')
-            }
-
-        },
-        getButtonText(){
-            return this.user.auth ? 'Выйти' : 'Авторизация'
         }
     },
     components:{
@@ -92,6 +81,7 @@ export default {
       LinkElement,
       ImageElement,
       NavElement,
+      LoginButton,
       LanguageChange
     }
 }

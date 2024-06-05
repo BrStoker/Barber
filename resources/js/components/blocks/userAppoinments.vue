@@ -7,7 +7,7 @@
           SpanElement(classCss="table_header") {{item.title}}
       tr(v-for="(item, index) in appointments" :key="index")
         td(v-for="(subItem, subIndex) in schema.cols" :key="subIndex")
-          SpanElement() {{item[subItem['name']]}}
+          SpanElement(:class="{ error: isDateInPast(item['appointment_date']) }") {{item[subItem['name']]}}
 </template>
 
 <script>
@@ -65,6 +65,11 @@ export default {
     },
     handlerErrorResponse(response){
       console.log(response)
+    },
+    isDateInPast(dateString) {
+      const appointmentDate = new Date(dateString);
+      const currentDate = new Date();
+      return appointmentDate < currentDate;
     }
   },
   mounted(){
@@ -92,6 +97,9 @@ export default {
 }
 .table-striped{
   max-height: 250px;
+}
+.error{
+  color: red;
 }
 
 </style>

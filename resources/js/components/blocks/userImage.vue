@@ -32,13 +32,18 @@ export default {
 </script>
 
 <style scoped>
+.userImage{
+  border: 3px solid #99BAED;
+  border-radius: 50%;
+  padding: 1px;
+}
 .userAvatar{
   max-width: 300px;
-  border-radius: 30px;
+  border-radius: 50%;
+  border: 3px solid #FBB400;
 }
 .userAvatar:hover {
   box-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);
-  cursor: pointer;
-
+  /*cursor: pointer;*/
 }
 </style>
