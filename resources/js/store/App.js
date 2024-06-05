@@ -12,10 +12,12 @@ export default {
         user:{
             auth: false,
             data:{
+                id: '',
                 first_name: '',
                 last_name: '',
                 phone: '',
-                email: ''
+                email: '',
+                image: ''
             }
         },
         services: []

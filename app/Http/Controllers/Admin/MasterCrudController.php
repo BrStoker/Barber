@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\MasterRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use App\Models\Master;
 
 /**
  * Class MasterCrudController
@@ -42,6 +43,11 @@ class MasterCrudController extends CrudController
 
         CRUD::addColumns([
             [
+                'name' => 'id',
+                'label' => '#',
+                'type' => 'row_number'
+            ],
+            [
                 'name' => 'photo',
                 'label' => 'Фото',
                 'type' => 'image',
@@ -53,7 +59,7 @@ class MasterCrudController extends CrudController
             [
                 'name' => 'active',
                 'label' => 'Работает',
-                'type' => 'switch'
+                'type' => 'boolean'
             ],
             [
                 'name' => 'first_name',
@@ -75,24 +81,14 @@ class MasterCrudController extends CrudController
                 'name' => 'occupation_id',
                 'label' => 'Профессия',
                 'type' => 'model_function',
-                'function_name' => 'occupations'
+                'function_name' => 'getOcupations'
             ]
 
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
-    /**
-     * Define what happens when the Create operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-create
-     * @return void
-     */
+
     protected function setupCreateOperation()
     {
         $entity = CRUD::getCurrentEntry();
@@ -125,7 +121,14 @@ class MasterCrudController extends CrudController
                     'label' => 'Работает',
                     'type'  => 'switch'
                 ]);
-
+                if(!empty($entity->photo))
+                {
+                    CRUD::addField([
+                        'name' => "html_image",
+                        'type'  => 'custom_html',
+                        'value' => "<img src='/storage/{$entity->photo}' style='height:100px;' />"
+                    ]);
+                }
                 CRUD::addField([
                     'name' => "photo",
                     'label' => 'Фото',
@@ -146,16 +149,17 @@ class MasterCrudController extends CrudController
                     'type' => 'text'
                 ]);
 
-                CRUD::addField([
-                    'name' => 'occupation_id',
-                    'label' => 'Профессия',
-                    'entity' => 'occupations',
-                    'type' => 'select',
-                    'model' => '\App\Models\Occupation',
-                    'options'   => (function ($query) {
-                        return $query->orderBy('name', 'ASC')->where('active', 1)->get();
-                    })
-                ]);
+//                CRUD::addField([
+//                    'name' => 'occupations_id',
+//                    'label' => 'Профессия',
+//                    'entity' => 'getAllOccupations',
+//                    'type' => 'select',
+//                    'attribute' => 'title',
+//                    'model' => '\App\Models\Occupation',
+//                    'options'   => (function ($query) {
+//                        return $query->orderBy('title', 'ASC')->where('active', 1)->get();
+//                    })
+//                ]);
 
 
             }
@@ -168,12 +172,12 @@ class MasterCrudController extends CrudController
             'type'        => 'switch'
         ]);
 
-        if(empty($entity->image) == false)
+        if(!empty($entity->photo))
         {
             CRUD::addField([
                 'name' => "html_image",
                 'type'  => 'custom_html',
-                'value' => "<img src='/storage/masters{$entity->photo}' style='height:100px;' />"
+                'value' => "<img src='/storage/{$entity->photo}' style='height:100px;' />"
             ]);
         }
 
@@ -202,10 +206,8 @@ class MasterCrudController extends CrudController
             'name' => 'occupations_id',
             'label' => 'Профессия',
             'type' => 'select_from_array',
-            'options'     => \App\Models\Occupation::arrayForSelect(function($item){
-                return [$item->id => $item->title];
-            }),
-            'allows_multiple' => false,
+            'options'     => \App\Models\Occupation::arrayForSelect(),
+//            'allows_multiple' => false,
 //            'value' => (isset($entity->occupations_id) == true && empty($entity->occupations_id) == false ? $entity->occupations_id : [])
         ]);
 

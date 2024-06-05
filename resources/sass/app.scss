@@ -216,9 +216,7 @@ h1 span {
 }
 
 .our-history{
-    background-image: url("../images/history-bg.svg");
     height: 1000px;
-    background-repeat: no-repeat;
 }
 
 .our-history-wrapper{
@@ -275,9 +273,6 @@ h1 span {
 .service-main{
     display: flex;
     flex-direction: column;
-    background-image: url("../images/service-bg.svg");
-    background-position: bottom;
-    background-repeat: no-repeat;
     height: 1200px;
 }
 
@@ -385,9 +380,6 @@ h1 span {
 .galery-main{
     display: flex;
     flex-direction: column;
-    background-image: url("../images/galery-bg.svg");
-    background-repeat: no-repeat;
-    background-position: top;
     height: 1300px;
 }
 
@@ -464,11 +456,9 @@ h1 span {
 .footer-main{
     display: flex;
     flex-direction: column;
-    background-image: url("../images/footer-bg.svg");
-    background-repeat: no-repeat;
-    background-position: bottom;
     height: 630px;
     gap: 80px;
+    padding-bottom: 30px;
 }
 
 .footer-logo{
@@ -898,4 +888,7 @@ h1 span {
 
 .align-end{
     align-items: end;
+}
+.page{
+    margin-top: 10em;
 }

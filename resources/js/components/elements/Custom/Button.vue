@@ -29,7 +29,6 @@ DivElement(classCss="form-item__main")
       Onclick(e){
         if(typeof(this.onclick) == 'function') {
 
-
           this.onclick(e)
           
         }

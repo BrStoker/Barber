@@ -1,5 +1,3 @@
-{{-- This file is used to store topbar (left) items --}}
-
-{{-- <li class="nav-item px-3"><a class="nav-link" href="#">Dashboard</a></li>
-<li class="nav-item px-3"><a class="nav-link" href="#">Users</a></li>
-<li class="nav-item px-3"><a class="nav-link" href="#">Settings</a></li> --}}
+<li class="nav-item px-3"><a class="nav-link" href="/admin/dashboard">Панель управления</a></li>
+<li class="nav-item px-3"><a class="nav-link" href="/admin/users">Пользователи</a></li>
+<li class="nav-item px-3"><a class="nav-link" href="/admin/settings">Настройки</a></li>

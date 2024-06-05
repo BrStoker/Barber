@@ -6,7 +6,8 @@ mix.webpackConfig(config)
 
 mix.js('resources/js/app.js', 'public/js').vue()
     .sass('resources/sass/app.scss', 'public/css')
-    .copy('node_modules/jquery/dist/jquery.min.js', 'public/js');
+    .copy('node_modules/jquery/dist/jquery.min.js', 'public/js')
+    .copy('resources/css/tabler.min.css', 'public/css');
 
 if (mix.inProduction()) {
 

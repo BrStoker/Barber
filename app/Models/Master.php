@@ -6,6 +6,8 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Master extends Model
 {
@@ -16,13 +18,27 @@ class Master extends Model
 
     protected $fillable = ['active', 'first_name', 'last_name', 'occupations_id'];
 
-//    public function occupations()
-//    {
-//        return $this->hasMany(Occupation::class);
-//    }
     public function occupations()
     {
         return $this->belongsToMany(Occupation::class, 'master_profession', 'master_id', 'profession_id');
+    }
+
+    public function getAllOccupations(){
+
+        return \App\Models\Occupation::all()->pluck('id', 'title');
+
+    }
+
+    public function getOcupations(){
+        $occupation = \App\Models\Occupation::find($this->occupations_id)->first();
+        if($occupation){
+            return $occupation->title;
+        }else{
+            return 'Профессия не установлена';
+        }
+
+
+
     }
 
     public function setImageAttribute($value)
@@ -50,7 +66,7 @@ class Master extends Model
 
         static::deleting(function($obj) {
 
-            \Storage::disk('public')->delete($obj->photo);
+            Storage::disk('public')->delete($obj->photo);
 
         });
 

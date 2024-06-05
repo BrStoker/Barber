@@ -46,22 +46,10 @@ return [
     // - 4 - less important than most columns
     'actionsColumnPriority' => 1,
 
-    // Nest action buttons within a dropdown in actions column
-    'lineButtonsAsDropdown' => false,
-
     // Show a "Reset" button next to the List operation subheading
     // (Showing 1 to 25 of 9999 entries. Reset)
     // that allows the user to erase local storage for that datatable,
     // thus clearing any searching, filtering or pagination that has been
     // remembered and persisted using persistentTable
     'resetButton' => true,
-
-    // The query operator that is used to search on the table.
-    // If you are using PostgreSQL you might want to change
-    // to `ilike` for case-insensitive search
-    'searchOperator' => 'like',
-
-    // Display the `Showing X of XX entries (filtered  from X entries)`?
-    // Setting this to false will improve performance on big datasets.
-    'showEntryCount' => true,
 ];

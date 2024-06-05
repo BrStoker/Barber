@@ -1,7 +1,7 @@
 <template lang="pug">
 DivElement(classCss="layout_ready-load" :class="modalShown()")
     Header
-    ServiceBlock
+    ServiceBlock(:env="env")
     FooterBlock(:env="env")
     ModalLayout
 </template>

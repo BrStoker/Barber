@@ -54,5 +54,7 @@ export default {
 </script>
 
 <style scoped>
-
+fieldset{
+  border: 0;
+}
 </style>

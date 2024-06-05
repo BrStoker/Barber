@@ -16,10 +16,12 @@ class MainController extends Controller
         }
         if($currentUser){
             $user = [
+                'id' => $currentUser->id,
                 'first_name' => $currentUser->first_name,
                 'last_name' => $currentUser->last_name,
                 'phone' => $currentUser->phone,
-                'email' => $currentUser->email
+                'email' => $currentUser->email,
+                'image' => $currentUser->image
             ];
         }
 

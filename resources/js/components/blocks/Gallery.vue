@@ -1,6 +1,7 @@
 <template lang="pug">
-SectionElement(classCss="galery-main")
-    DivElement(classCss="galery-title")
+SectionElement(classCss="galery-main" v-if="!store.user.auth")
+    DivElement(classCss="page" v-if="env == 'page'")
+    DivElement(classCss="galery-title" v-if="env == 'main'")
         h2(class="galery-title__first-item") {{'Наша'}}
         h2(class="galery-title__second-item") {{'галерея'}}
     NavElement(classCss="galery-nav")
@@ -21,6 +22,7 @@ export default {
     props: ['env'],
     data(){
         return{
+          store: this.$store.state.data.app,
             images:[
                 {
                     image: 'images/mask_group.png'
@@ -47,7 +49,7 @@ export default {
     methods:{
         viewGallery(e){
             e.preventDefault()
-            console.log(e)
+            window.location.href = '/gallery'
         }
     },
     components:{

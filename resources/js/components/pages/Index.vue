@@ -3,8 +3,9 @@ DivElement(classCss="layout_ready-load" :class="modalShown()")
     Header
     GetStartedBlock
     HistoryBlock(:env="env")
-    ServiceBlock
+    ServiceBlock(:env="env")
     GalleryBlock(:env="env")
+    ProfileBlock(:env="env" v-if="store.user.auth")
     FooterBlock(:env="env")
     ModalLayout
 </template>
@@ -16,6 +17,7 @@ import GetStartedBlock from '@/js/components/blocks/getStarted'
 import HistoryBlock from "@/js/components/blocks/History";
 import ServiceBlock from "@/js/components/blocks/Service";
 import GalleryBlock from "@/js/components/blocks/Gallery";
+import ProfileBlock from "@/js/components/blocks/Profile";
 import FooterBlock from "@/js/components/blocks/Footer";
 import ModalLayout from "@/js/components/blocks/ModalLayout";
 
@@ -26,7 +28,8 @@ export default {
     props: ['data'],
     data(){
         return {
-            env: 'main'
+            env: 'main',
+          store: this.$store.state.data.app,
         }
     },
     methods:{
@@ -40,6 +43,7 @@ export default {
         HistoryBlock,
         ServiceBlock,
         GalleryBlock,
+        ProfileBlock,
         FooterBlock,
         ModalLayout
     },

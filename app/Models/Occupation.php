@@ -18,4 +18,13 @@ class Occupation extends Model
     {
         return $this->belongsToMany(Master::class, 'master_profession', 'profession_id', 'master_id');
     }
+
+    public function arrayForSelect(){
+        return self::all()->transform(function ($record) {
+            return [
+                'key' => $record->id,
+                'value' => $record->title
+            ];
+        });
+    }
 }

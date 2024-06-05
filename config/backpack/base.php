@@ -85,7 +85,7 @@ return [
     // ------
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => '<b>Bar</b>ber',
+    'project_logo'   => '<img src="/images/logo.svg" style="width: 110px; margin-top: 10px;"/>',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => false,
@@ -114,7 +114,7 @@ return [
     // ------
 
     // Footer element classes.
-    'footer_class' => 'app-footer bg-secondary',
+    'footer_class' => 'app-footer d-print-none',
     // hide it with d-none
     // change background color with bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white
 
@@ -135,6 +135,7 @@ return [
     'scripts' => [
         // Backstrap includes jQuery, Bootstrap, CoreUI, PNotify, Popper
         'packages/backpack/base/js/bundle.js',
+        '/ace/js/ace.js'
 
         // examples (everything inside the bundle, loaded from CDN)
         // 'https://code.jquery.com/jquery-3.4.1.min.js',

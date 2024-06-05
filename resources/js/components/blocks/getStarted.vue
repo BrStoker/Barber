@@ -1,10 +1,10 @@
 <template lang="pug">
-    SectionElement(classCss="starter-wraper")
+    SectionElement(classCss="starter-wraper" v-if="!store.user.auth")
         h1
             SpanElement {{'Прическа '}}
             | отражает вашу внутреннюю личность
         p {{'Ваши волосы - ваш характер: стиль, который говорит за вас.'}}
-        button(class="btn btn-primary btn-lg main-button" @click="getStarted") {{'Измениться'}}
+        button(class="btn btn-primary btn-lg main-button" @click="getStarted" v-if="!store.user.auth") {{'Измениться'}}
 </template>
 
 <script>
@@ -17,16 +17,19 @@ export default {
     name: "getStarted",
     data(){
         return{
-
+          store: this.$store.state.data.app
         }
     },
     methods:{
         getStarted(e){
             e.preventDefault()
-            console.log(e)
+            this.$store.commit('showLoginForm')
         }
 
     },
+  mounted(){
+    console.log(this.store)
+  },
     components:{
         DivElement,
         ImageElement,

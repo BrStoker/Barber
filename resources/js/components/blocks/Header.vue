@@ -16,6 +16,7 @@ header
                 LinkElement(:href="links.notification" v-show="user.auth")
                     ImageElement(:src="images.notification")
                 button(class="btn btn-primary btn-lg main-button" @click="showAppointment") {{getButtonText()}}
+                //LanguageChange
 
 
 </template>
@@ -26,6 +27,7 @@ import SpanElement from "@/js/components/elements/Span";
 import LinkElement from "@/js/components/elements/Link";
 import ImageElement from "@/js/components/elements/Image";
 import NavElement from "@/js/components/elements/Nav";
+import LanguageChange from "@/js/components/blocks/languageChange";
 
 
 export default {
@@ -65,7 +67,7 @@ export default {
     },
     methods:{
         linkActive(item){
-            if(window.location.pathname == item.link){
+            if(window.location.pathname === item.link){
                 return 'active'
             }else{
                 return ''
@@ -85,12 +87,12 @@ export default {
         }
     },
     components:{
-        DivElement,
-        SpanElement,
-        LinkElement,
-        ImageElement,
-        NavElement
-
+      DivElement,
+      SpanElement,
+      LinkElement,
+      ImageElement,
+      NavElement,
+      LanguageChange
     }
 }
 </script>
