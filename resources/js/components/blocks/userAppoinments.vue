@@ -5,9 +5,9 @@
       tr
         td(v-for="(item, index) in schema.cols" :key="index")
           SpanElement(classCss="table_header") {{item.title}}
-      tr
-        td(v-for="(item, index) in appointments" :key="index")
-          SpanElement() {{item}}
+      tr(v-for="(item, index) in appointments" :key="index")
+        td(v-for="(subItem, subIndex) in schema.cols" :key="subIndex")
+          SpanElement() {{item[subItem['name']]}}
 </template>
 
 <script>

@@ -40,7 +40,7 @@ export default {
     data(){
         return{
           store: this.$store.state.data.app,
-            services: this.$store.state.data.app.services
+          services: this.$store.state.data.app.services
 
         }
     },

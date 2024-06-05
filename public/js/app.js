@@ -3828,11 +3828,15 @@ var render = function render() {
         classCss: "table_header"
       }
     }, [_vm._v(_vm._s(item.title))])], 1);
-  }), 0), _c("tr", _vm._l(_vm.appointments, function (item, index) {
-    return _c("td", {
+  }), 0), _vm._l(_vm.appointments, function (item, index) {
+    return _c("tr", {
       key: index
-    }, [_c("SpanElement", [_vm._v(_vm._s(item))])], 1);
-  }), 0)])], 1);
+    }, _vm._l(_vm.schema.cols, function (subItem, subIndex) {
+      return _c("td", {
+        key: subIndex
+      }, [_c("SpanElement", [_vm._v(_vm._s(item[subItem["name"]]))])], 1);
+    }), 0);
+  })], 2)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -10225,7 +10229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.profile-block[data-v-1ab415ea]{\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 1000px;\n}\n.image[data-v-1ab415ea]{\n  width: 50%;\n  padding: 1.5em;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.information[data-v-1ab415ea]{\n  width: 50%;\n  padding: 1.5em;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.profile-block[data-v-1ab415ea]{\r\n  display: flex;\r\n  flex-direction: row;\r\n  width: 100%;\r\n  height: 1000px;\n}\n.image[data-v-1ab415ea]{\r\n  width: 50%;\r\n  padding: 1.5em;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\n}\n.information[data-v-1ab415ea]{\r\n  width: 50%;\r\n  padding: 1.5em;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10249,7 +10253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#container[data-v-4f507716] {\n  justify-content: end;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\nnav[data-v-4f507716] {\n  margin: 50px 0;\n  /*background-color: #E64A19;*/\n}\nnav ul[data-v-4f507716] {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n  position: relative;\n}\nnav ul li[data-v-4f507716] {\n  display:inline-block;\n  /*background-color: #E64A19;*/\n}\nnav a[data-v-4f507716] {\n  display:block;\n  padding:0 10px;\n  /*color:#FFF;*/\n  font-size:20px;\n  line-height: 60px;\n  text-decoration:none;\n}\nnav a[data-v-4f507716]:hover {\n  /*background-color: #000000;*/\n}\n\n/* Hide Dropdowns by Default */\nnav ul ul[data-v-4f507716] {\n  display: none;\n  position: absolute;\n  top: 60px; /* the height of the main nav */\n}\n\n/* Display Dropdowns on Hover */\nnav ul li:hover > ul[data-v-4f507716] {\n  display:inherit;\n}\n\n/* Fisrt Tier Dropdown */\nnav ul ul li[data-v-4f507716] {\n  width:170px;\n  float:none;\n  display:flex;\n  flex-direction: row;\n  padding: 0 0.5em;\n  position: relative;\n  border: 1px solid #99BAED;\n  background-color: #ffffff;\n}\n\n/* Second, Third and more Tiers\t*/\nnav ul ul ul li[data-v-4f507716] {\n  position: relative;\n  top:-60px;\n  left:170px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#container[data-v-4f507716] {\r\n  justify-content: end;\r\n  max-width: -moz-fit-content;\r\n  max-width: fit-content;\r\n  width: -moz-fit-content;\r\n  width: fit-content;\n}\nnav[data-v-4f507716] {\r\n  margin: 50px 0;\r\n  /*background-color: #E64A19;*/\n}\nnav ul[data-v-4f507716] {\r\n  padding: 0;\r\n  margin: 0;\r\n  list-style: none;\r\n  position: relative;\n}\nnav ul li[data-v-4f507716] {\r\n  display:inline-block;\r\n  /*background-color: #E64A19;*/\n}\nnav a[data-v-4f507716] {\r\n  display:block;\r\n  padding:0 10px;\r\n  /*color:#FFF;*/\r\n  font-size:20px;\r\n  line-height: 60px;\r\n  text-decoration:none;\n}\nnav a[data-v-4f507716]:hover {\r\n  /*background-color: #000000;*/\n}\r\n\r\n/* Hide Dropdowns by Default */\nnav ul ul[data-v-4f507716] {\r\n  display: none;\r\n  position: absolute;\r\n  top: 60px; /* the height of the main nav */\n}\r\n\r\n/* Display Dropdowns on Hover */\nnav ul li:hover > ul[data-v-4f507716] {\r\n  display:inherit;\n}\r\n\r\n/* Fisrt Tier Dropdown */\nnav ul ul li[data-v-4f507716] {\r\n  width:170px;\r\n  float:none;\r\n  display:flex;\r\n  flex-direction: row;\r\n  padding: 0 0.5em;\r\n  position: relative;\r\n  border: 1px solid #99BAED;\r\n  background-color: #ffffff;\n}\r\n\r\n/* Second, Third and more Tiers\t*/\nnav ul ul ul li[data-v-4f507716] {\r\n  position: relative;\r\n  top:-60px;\r\n  left:170px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10273,7 +10277,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nfieldset[data-v-2c6e5fa2]{\n  border: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nfieldset[data-v-2c6e5fa2]{\r\n  border: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10297,7 +10301,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nfieldset[data-v-4b71b0a2]{\n  border: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nfieldset[data-v-4b71b0a2]{\r\n  border: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10321,7 +10325,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.appoinments[data-v-446faf4e]{\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.appoinments .title[data-v-446faf4e]{\n  font-size: 45px;\n  color: #99BAED;\n  font-weight: bold;\n  text-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);\n}\n.table_header[data-v-446faf4e]{\n  font-weight: bold;\n}\n.table-striped[data-v-446faf4e]{\n  max-height: 250px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.appoinments[data-v-446faf4e]{\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\n}\n.appoinments .title[data-v-446faf4e]{\r\n  font-size: 45px;\r\n  color: #99BAED;\r\n  font-weight: bold;\r\n  text-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);\n}\n.table_header[data-v-446faf4e]{\r\n  font-weight: bold;\n}\n.table-striped[data-v-446faf4e]{\r\n  max-height: 250px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10345,7 +10349,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.userAvatar[data-v-700fd9d2]{\n  max-width: 300px;\n  border-radius: 30px;\n}\n.userAvatar[data-v-700fd9d2]:hover {\n  box-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);\n  cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.userAvatar[data-v-700fd9d2]{\r\n  max-width: 300px;\r\n  border-radius: 30px;\n}\n.userAvatar[data-v-700fd9d2]:hover {\r\n  box-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);\r\n  cursor: pointer;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10369,7 +10373,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.username[data-v-1d8ddc3a]{\n  font-size: 40px;\n  font-weight: bold;\n}\n.userInfo[data-v-1d8ddc3a]{\n  margin-top: 0.5em;\n}\n.userInfo span[data-v-1d8ddc3a]{\n  margin-left: 1.5em;\n}\n.icon[data-v-1d8ddc3a]{\n  width: 20px;\n  height: 20px;\n  color: #99BAED;\n}\n.button[data-v-1d8ddc3a]{\n  margin-top: 1.5em;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.username[data-v-1d8ddc3a]{\r\n  font-size: 40px;\r\n  font-weight: bold;\n}\n.userInfo[data-v-1d8ddc3a]{\r\n  margin-top: 0.5em;\n}\n.userInfo span[data-v-1d8ddc3a]{\r\n  margin-left: 1.5em;\n}\n.icon[data-v-1d8ddc3a]{\r\n  width: 20px;\r\n  height: 20px;\r\n  color: #99BAED;\n}\n.button[data-v-1d8ddc3a]{\r\n  margin-top: 1.5em;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10393,7 +10397,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vueEditor{\n  width: 100%;\n  margin-bottom: 12px;\n  border-radius: 0.5rem;\n  border: 0.12rem solid rgba(8, 23, 14, 0.2);\n}\n.vueEditor:hover{\n  border-color: rgb(10, 123, 55);\n}\n.vueEditor .ql-editor {\n  min-height: 150px;\n}\n.vueEditor .ql-editor:focus{\n  border-color: rgb(10, 123, 55);\n}\n.vueEditor .ql-container{\n  height: unset;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vueEditor{\r\n  width: 100%;\r\n  margin-bottom: 12px;\r\n  border-radius: 0.5rem;\r\n  border: 0.12rem solid rgba(8, 23, 14, 0.2);\n}\n.vueEditor:hover{\r\n  border-color: rgb(10, 123, 55);\n}\n.vueEditor .ql-editor {\r\n  min-height: 150px;\n}\n.vueEditor .ql-editor:focus{\r\n  border-color: rgb(10, 123, 55);\n}\n.vueEditor .ql-container{\r\n  height: unset;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10417,7 +10421,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.choices{\n  width: 100%;\n  margin-top: 16px;\n}\n.choices__inner{\n  color: rgb(8, 22, 14);\n  background-color: rgb(255, 255, 255);\n  font-size: 1rem;\n  line-height: 1.25rem;\n  font-weight: 500;\n  font-family: \"Montserrat\", sans-serif;\n  border-radius: 0.5rem;\n  border: 0.125rem solid rgba(8, 23, 14, 0.2);\n}\n.is-open .choices__inner{\n  color: rgb(8, 22, 14);\n  background-color: rgb(255, 255, 255);\n  font-size: 1rem;\n  line-height: 1.25rem;\n  font-weight: 500;\n  font-family: \"Montserrat\", sans-serif;\n  border-radius: 0.5rem;\n  border: 0.125rem solid rgba(8, 23, 14, 0.2);\n}\n.is-focused .choices__inner{\n  color: rgb(8, 22, 14);\n  border-color: rgb(11, 118, 54);\n}\n.is-highlighted{\n  background-color: rgb(11, 118, 54);\n}\n.choices__list--dropdown .choices__item--selectable,.choices__list[aria-expanded] .choices__item--selectable {\n  padding-right: 10px\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.choices{\r\n  width: 100%;\r\n  margin-top: 16px;\n}\n.choices__inner{\r\n  color: rgb(8, 22, 14);\r\n  background-color: rgb(255, 255, 255);\r\n  font-size: 1rem;\r\n  line-height: 1.25rem;\r\n  font-weight: 500;\r\n  font-family: \"Montserrat\", sans-serif;\r\n  border-radius: 0.5rem;\r\n  border: 0.125rem solid rgba(8, 23, 14, 0.2);\n}\n.is-open .choices__inner{\r\n  color: rgb(8, 22, 14);\r\n  background-color: rgb(255, 255, 255);\r\n  font-size: 1rem;\r\n  line-height: 1.25rem;\r\n  font-weight: 500;\r\n  font-family: \"Montserrat\", sans-serif;\r\n  border-radius: 0.5rem;\r\n  border: 0.125rem solid rgba(8, 23, 14, 0.2);\n}\n.is-focused .choices__inner{\r\n  color: rgb(8, 22, 14);\r\n  border-color: rgb(11, 118, 54);\n}\n.is-highlighted{\r\n  background-color: rgb(11, 118, 54);\n}\n.choices__list--dropdown .choices__item--selectable,.choices__list[aria-expanded] .choices__item--selectable {\r\n  padding-right: 10px\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
