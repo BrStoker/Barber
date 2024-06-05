@@ -17,7 +17,8 @@
         "laravel/ui": "^3.4",
         "nesbot/carbon": "^2.72",
         "spatie/laravel-permission": "^5.11",
-        "symfony/http-kernel": "5.4.35"
+        "symfony/http-kernel": "5.4.35",
+      "ext-json": "*"
     },
     "require-dev": {
         "backpack/generators": "^3.3",
