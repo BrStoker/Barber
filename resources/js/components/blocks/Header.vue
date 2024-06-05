@@ -8,7 +8,7 @@ header
                 NavElement(classCss="nav")
                     ul(class="list")
                         li(v-for="(item, index) in items" :key="index" class="list-item")
-                            LinkElement(:href="item.link" classCss="list-item-link" :class="linkActive(item)")
+                            LinkElement(:href="item.link" classCss="list-item-link" :class="linkActive(item)" v-show="showLink(item)")
                                 SpanElement(classCss="title_link") {{item.title}}
             DivElement(classCss="control-bar")
                 LinkElement(:href="links.profile" v-show="user.auth")
@@ -48,32 +48,48 @@ export default {
             },
             items:[
                 {
-                    title: 'Главная',
-                    link: '/'
+                  title: 'Главная',
+                  link: '/',
+                  needAuth: false
                 },
                 {
-                    title: 'История',
-                    link: '/history'
+                  title: 'История',
+                  link: '/history',
+                  needAuth: false
                 },
                 {
-                    title: 'Сервисы',
-                    link: '/service'
+                  title: 'Сервисы',
+                  link: '/service',
+                  needAuth: false
                 },
                 {
-                    title: 'Галерея',
-                    link: '/gallery'
+                  title: 'Галерея',
+                  link: '/gallery',
+                  needAuth: false
+                },
+                {
+                  title: 'Профиль',
+                  link: '/profile',
+                  needAuth: true
                 },
             ]
         }
     },
     methods:{
-        linkActive(item){
-            if(window.location.pathname === item.link){
-                return 'active'
-            }else{
-                return ''
-            }
+      linkActive(item){
+        if(window.location.pathname === item.link){
+          return 'active'
+        }else{
+          return ''
         }
+      },
+      showLink(link){
+        if (link.needAuth){
+          return this.user.auth
+        }else{
+          return true
+        }
+      }
     },
     components:{
       DivElement,

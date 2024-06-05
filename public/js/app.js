@@ -163,16 +163,24 @@ __webpack_require__.r(__webpack_exports__);
       },
       items: [{
         title: 'Главная',
-        link: '/'
+        link: '/',
+        needAuth: false
       }, {
         title: 'История',
-        link: '/history'
+        link: '/history',
+        needAuth: false
       }, {
         title: 'Сервисы',
-        link: '/service'
+        link: '/service',
+        needAuth: false
       }, {
         title: 'Галерея',
-        link: '/gallery'
+        link: '/gallery',
+        needAuth: false
+      }, {
+        title: 'Профиль',
+        link: '/profile',
+        needAuth: true
       }]
     };
   },
@@ -182,6 +190,13 @@ __webpack_require__.r(__webpack_exports__);
         return 'active';
       } else {
         return '';
+      }
+    },
+    showLink: function showLink(link) {
+      if (link.needAuth) {
+        return this.user.auth;
+      } else {
+        return true;
       }
     }
   },
@@ -3296,6 +3311,12 @@ var render = function render() {
       key: index,
       staticClass: "list-item"
     }, [_c("LinkElement", {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: _vm.showLink(item),
+        expression: "showLink(item)"
+      }],
       "class": _vm.linkActive(item),
       attrs: {
         href: item.link,

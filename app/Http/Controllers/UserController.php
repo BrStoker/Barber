@@ -10,17 +10,17 @@ class UserController extends Controller
 
     public function profile(){
 
-        $data = request()->all();
-        if(request()->method() === 'GET'){
-            $appointments = parent::get_appointments();
-            $user = parent::getUser();
+        if(request()->method() === 'POST'){
+            return null;
+        }else{
             return view('profile', [
                 'data' => json_encode([
-                    'user' => $user,
-                    'appointments' => $appointments
+                    'user' => parent::getUser(),
+                    'appointments' => parent::get_appointments()
 
                 ])
             ]);
+
         }
 
 
