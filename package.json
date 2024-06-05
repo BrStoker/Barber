@@ -17,7 +17,7 @@
         "loader-utils": ">=2.0.4",
         "lodash": "^4.17.19",
         "postcss": "^8.4.31",
-        "pug": "^3.0.2",
+        "pug": "^3.0.3",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
