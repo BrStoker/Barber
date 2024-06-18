@@ -12,7 +12,7 @@ export default {
   data(){
     return{
       store: this.$store.state.data.app,
-      image: '/public/images/master.png'
+      image: '/storage/images/master.png'
     }
   },
   methods: {

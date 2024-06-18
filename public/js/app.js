@@ -269,8 +269,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _js_components_elements_Empty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/components/elements/Empty */ "./resources/js/components/elements/Empty.vue");
-/* harmony import */ var _js_components_elements_Image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/elements/Image */ "./resources/js/components/elements/Image.vue");
-/* harmony import */ var _js_components_elements_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/elements/Link */ "./resources/js/components/elements/Link.vue");
+/* harmony import */ var _js_components_elements_Div__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/elements/Div */ "./resources/js/components/elements/Div.vue");
+/* harmony import */ var _js_components_elements_Image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/elements/Image */ "./resources/js/components/elements/Image.vue");
+/* harmony import */ var _js_components_elements_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/elements/Link */ "./resources/js/components/elements/Link.vue");
+/* harmony import */ var _js_components_elements_Span__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/elements/Span */ "./resources/js/components/elements/Span.vue");
+/* harmony import */ var _js_components_elements_Svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/components/elements/Svg */ "./resources/js/components/elements/Svg.vue");
+
+
+
 
 
 
@@ -280,13 +286,20 @@ __webpack_require__.r(__webpack_exports__);
     return {
       user: this.$store.state.data.app.user,
       image: '/storage/images/master.png',
-      link: '/profile'
+      link: '/profile',
+      menu: [{
+        link: '/logout',
+        text: 'Выйти'
+      }]
     };
   },
   components: {
     EmptyElement: _js_components_elements_Empty__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ImageElement: _js_components_elements_Image__WEBPACK_IMPORTED_MODULE_1__["default"],
-    LinkElement: _js_components_elements_Link__WEBPACK_IMPORTED_MODULE_2__["default"]
+    ImageElement: _js_components_elements_Image__WEBPACK_IMPORTED_MODULE_2__["default"],
+    LinkElement: _js_components_elements_Link__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SpanElement: _js_components_elements_Span__WEBPACK_IMPORTED_MODULE_4__["default"],
+    SvgElement: _js_components_elements_Svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    DivElement: _js_components_elements_Div__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
     showAppointment: function showAppointment(e) {
@@ -588,7 +601,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log(response);
       if (response.data.code !== undefined && response.data.code == 0) {
         if (response.data.location) {
-          console.log(response.data.location);
           location.href = response.data.location;
         } else {
           if (response.data.desc !== undefined && response.data.desc.length) {
@@ -637,10 +649,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_components_elements_Svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/elements/Svg */ "./resources/js/components/elements/Svg.vue");
 /* harmony import */ var _js_components_elements_FormInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/elements/FormInput */ "./resources/js/components/elements/FormInput.vue");
 /* harmony import */ var _js_components_elements_Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/elements/Form */ "./resources/js/components/elements/Form.vue");
-/* harmony import */ var _js_computed_blocks_modals_ModalLayout_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/computed/blocks/modals/ModalLayout.js */ "./resources/js/computed/blocks/modals/ModalLayout.js");
+/* harmony import */ var _js_classes_Http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/classes/Http */ "./resources/js/classes/Http.js");
+/* harmony import */ var _js_computed_blocks_modals_ModalLayout_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/computed/blocks/modals/ModalLayout.js */ "./resources/js/computed/blocks/modals/ModalLayout.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -655,13 +669,77 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       close: 'images/svg/sprite.svg#close'
     };
   },
-  methods: _objectSpread(_objectSpread({}, _js_computed_blocks_modals_ModalLayout_js__WEBPACK_IMPORTED_MODULE_5__["default"]), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, _js_classes_Http__WEBPACK_IMPORTED_MODULE_5__["default"]), _js_computed_blocks_modals_ModalLayout_js__WEBPACK_IMPORTED_MODULE_6__["default"]), {}, {
     showForm: function showForm() {
       this.$store.commit('closeRegisterForm');
     },
     register: function register(e) {
       e.preventDefault();
-      console.log(e);
+      var error = this.validateForm();
+      if (!error) {
+        var form = this.SchemasToFormData(this.schema);
+        this.sendRequest({
+          url: this.schema.action,
+          method: this.schema.method,
+          data: form,
+          success: this.registerSuccess,
+          error: this.registerError
+        });
+      } else {}
+    },
+    registerSuccess: function registerSuccess(response) {
+      var data = response.data;
+      if (data.code === 0 && _.has(data, 'location')) {
+        location.href = data.location;
+      }
+    },
+    registerError: function registerError(response) {
+      console.error(response);
+    },
+    validateForm: function validateForm() {
+      var _this = this;
+      var error = false;
+      this.schema.steps.forEach(function (step) {
+        step.inputs.forEach(function (input) {
+          if (input.validate && !input.hidden) {
+            if (input.required && !input.value) {
+              input.error = 'Это поле обязательно для заполнения';
+              error = true;
+            } else {
+              input.error = '';
+            }
+            if (input.type === 'email' && !_this.validateEmail(input.value)) {
+              input.error = 'Введите корректный адрес электронной почты';
+              error = true;
+            } else if (input.type === 'tel' && !_this.validatePhone(input.value)) {
+              input.error = 'Введите корректный номер телефона';
+              error = true;
+            } else if (input.type === 'password' && input.name === 'password_confirm' && input.value !== _this.getPasswordValue()) {
+              input.error = 'Пароли не совпадают';
+              error = true;
+            } else {
+              input.error = '';
+            }
+          }
+        });
+      });
+      return error;
+    },
+    validateEmail: function validateEmail(email) {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    },
+    validatePhone: function validatePhone(phone) {
+      var re = /^[0-9\-\+]{9,15}$/;
+      return re.test(phone);
+    },
+    getPasswordValue: function getPasswordValue() {
+      var passwordInput = this.schema.steps.flatMap(function (step) {
+        return step.inputs;
+      }).find(function (input) {
+        return input.name === 'password';
+      });
+      return passwordInput ? passwordInput.value : '';
     }
   }),
   components: {
@@ -774,7 +852,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       store: this.$store.state.data.app,
-      image: '/public/images/master.png'
+      image: '/storage/images/master.png'
     };
   },
   methods: {
@@ -3482,7 +3560,23 @@ var render = function render() {
     on: {
       click: _vm.showAppointment
     }
-  }, [_vm._v(_vm._s(_vm.getButtonText()))]) : _c("LinkElement", {
+  }, [_vm._v(_vm._s(_vm.getButtonText()))]) : _c("DivElement", {
+    attrs: {
+      classCss: "header__menu, menu"
+    }
+  }, [_c("DivElement", {
+    attrs: {
+      classCss: "menu__list"
+    }
+  }, [_c("DivElement", {
+    attrs: {
+      classCss: "menu__item, dropdown-init"
+    }
+  }, [_c("DivElement", {
+    attrs: {
+      classCss: "menu__preview"
+    }
+  }, [_c("LinkElement", {
     attrs: {
       href: _vm.link,
       classCss: "loginLink"
@@ -3492,7 +3586,35 @@ var render = function render() {
       src: _vm.getUserImage(),
       classCss: "loginAvatar"
     }
-  })], 1)], 1);
+  })], 1)], 1), _c("DivElement", {
+    attrs: {
+      classCss: "menu__dropdown, layout__dropdown, dropdown"
+    }
+  }, [_c("DivElement", {
+    attrs: {
+      classCss: "dropdown__list"
+    }
+  }, _vm._l(_vm.menu, function (item, index) {
+    return _c("DivElement", {
+      key: index,
+      attrs: {
+        classCss: "dropdown__item"
+      }
+    }, [_c("LinkElement", {
+      attrs: {
+        classCss: "dropdown__link",
+        href: item.link
+      }
+    }, [_c("DivElement", {
+      attrs: {
+        classCss: "dropdown__title, title"
+      }
+    }, [_c("SpanElement", {
+      attrs: {
+        classCss: "title__text"
+      }
+    }, [_vm._v(_vm._s(item.text))])], 1)], 1)], 1);
+  }), 1)], 1)], 1)], 1)], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -5232,29 +5354,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   SchemasToFormData: function SchemasToFormData(schema) {
     var result = null;
-    if (_.isObject(schema) == true && _.size(schema)) {
+    if (_.isObject(schema) === true && _.size(schema)) {
       var formData = new FormData(),
         inputs = [];
-      if (_.has(schema, 'steps') == true) {
+      if (_.has(schema, 'steps') === true) {
         _.forEach(schema.steps, function (item) {
-          if (item.name == 'interest' || item.name == 'fio') {
+          if (item.name === 'interest' || item.name === 'fio') {
             inputs.push(item);
             return;
           }
-          if (item.type == 'radio') {
+          if (item.type === 'radio') {
             inputs.push(item);
           } else {
-            if (_.has(item, 'inputs') == true) {
-              if (_.isArray(item) == true) {
+            if (_.has(item, 'inputs') === true) {
+              if (_.isArray(item) === true) {
                 _.forEach(item.inputs, function (subItem) {
                   // console.log(subItem)
                   inputs.push(subItem);
                 });
-              } else if (_.isObject(item.inputs) == true) {
+              } else if (_.isObject(item.inputs) === true) {
                 _.forIn(item.inputs, function (subItem) {
                   // console.log(subItem)
 
-                  if (_.has(subItem, 'inputs') == true) {
+                  if (_.has(subItem, 'inputs') === true) {
                     for (var key in subItem.inputs) {
                       // console.log(subItem.inputs[key]);
                       inputs.push(subItem.inputs[key]);
@@ -5267,24 +5389,24 @@ __webpack_require__.r(__webpack_exports__);
             }
           }
         });
-      } else if (_.has(schema, 'inputs') == true) {
+      } else if (_.has(schema, 'inputs') === true) {
         inputs = schema.inputs;
       }
       if (_.size(inputs) > 0) {
         _.forEach(inputs, function (item) {
-          if (_.has(item, 'name') == true && _.has(item, 'value')) {
-            if (_.has(item, 'send') == true && item.send == false) {
+          if (_.has(item, 'name') === true && _.has(item, 'value') === true) {
+            if (_.has(item, 'send') === true && item.send === false) {
               return;
             }
-            if (_.isArray(item.value) || _.isObject(item.value) == true) {
+            if (_.isArray(item.value) || _.isObject(item.value) === true) {
               if (_.size(item.value) > 0) {
                 _.forEach(item.value, function (value) {
                   formData.append(item.name + '[]', value);
                 });
               }
             } else {
-              if (item.type == 'checkbox') {
-                if (item.send == true) {
+              if (item.type === 'checkbox') {
+                if (item.send) {
                   formData.append(item.name, item.value);
                 } else {
                   if (item.value === true || item.value === 'true') {
@@ -5292,7 +5414,7 @@ __webpack_require__.r(__webpack_exports__);
                   }
                 }
               } else {
-                if (item.value != null && item.value.length != 0 && item.value != false) {
+                if (item.value != null && item.value.length !== 0 && item.value !== false) {
                   formData.append(item.name, item.value);
                 }
               }
@@ -5317,32 +5439,32 @@ __webpack_require__.r(__webpack_exports__);
         console.error(result);
       };
     _.forEach(['method', 'url'], function (value) {
-      if (_.has(params, value) == false) {
+      if (_.has(params, value) === false) {
         console.error('sendRequest -> ' + value);
       } else {
         settings[value] = params[value];
       }
     });
-    if (_.has(params, 'data') == true && !(params.data instanceof FormData)) {
+    if (_.has(params, 'data') === true && !(params.data instanceof FormData)) {
       settings.data = new FormData();
     } else {
       settings.data = params.data;
     }
     settings.data.append('_token', this.csrf());
-    if (_.has(params, 'headers') == true) {
+    if (_.has(params, 'headers') === true) {
       settings.headers = params.headers;
     }
-    if (_.has(settings.headers, 'Content-Type') == false) {
+    if (_.has(settings.headers, 'Content-Type') === false) {
       _.set(settings, 'headers.Content-Type', 'multipart/form-data');
     }
-    if (_.has(params, 'success') == true && _.isFunction(params.success) == true) {
+    if (_.has(params, 'success') === true && _.isFunction(params.success) === true) {
       success = params.success;
     }
-    if (_.has(params, 'error') == true && _.isFunction(params.error) == true) {
+    if (_.has(params, 'error') === true && _.isFunction(params.error) === true) {
       error = params.error;
     }
     window.axios(settings).then(function (result) {
-      if (result.status == 200 || result.status == 301 || result.status == 302) {
+      if (result.status === 200 || result.status === 301 || result.status === 302) {
         success(result);
       } else {
         error(result);
@@ -5359,7 +5481,7 @@ __webpack_require__.r(__webpack_exports__);
     if (form != null && form.tagName === 'FORM') {
       var inputsForm = form.querySelectorAll('input');
       inputsForm.forEach(function (input) {
-        if (input.name != '_token') {
+        if (input.name !== '_token') {
           code = code + input.value;
         }
       });
@@ -6014,24 +6136,7 @@ __webpack_require__.r(__webpack_exports__);
       value: '',
       rules: []
     }]
-  }
-  // {
-  //     type: 'supportLink',
-  //     class: 'col, col_12',
-  //     inputs: [
-  //         {
-  //             send: false,
-  //             name: 'button',
-  //             placeholder: 'Обратиться в техподдержку',
-  //             required: true,
-  //             type: '',
-  //             inputType: 'supportLink',
-  //             value: 'Обратиться в техподдержку',
-  //             rules: []
-  //         }
-  //     ]
-  // }
-  ]
+  }]
 });
 
 /***/ }),
@@ -10415,7 +10520,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.loginLink[data-v-38044d5d]{\n  border: 3px solid #99BAED;\n  border-radius: 50%;\n  padding: 1px;\n}\n.loginLink[data-v-38044d5d]:hover{\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.loginAvatar[data-v-38044d5d]{\n  width: 75px;\n  height: 75px;\n  border: 3px solid #FBB400;\n  border-radius: 50%;\n  overflow: hidden;\n  cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.menu__preview.loginLink[data-v-38044d5d]{\n  border: 3px solid #99BAED;\n  border-radius: 50%;\n  padding: 1px;\n  transition: box-shadow 0.3s ease;\n}\n.menu__preview.loginLink[data-v-38044d5d]:hover{\n  /*text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/\n}\n.loginAvatar[data-v-38044d5d]{\n  width: 75px;\n  height: 75px;\n  border: 3px solid #FBB400;\n  border-radius: 50%;\n  overflow: hidden;\n  cursor: pointer;\n}\n.header__menu .menu__list[data-v-38044d5d] {\n  display: flex;\n}\n@media screen and (min-width: 768px) {\n.header__menu .menu__list[data-v-38044d5d] {\n    margin: -2rem 0;\n}\n}\n.header__menu .menu__item[data-v-38044d5d] {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n@media screen and (min-width: 768px) {\n.header__menu .menu__item:hover .menu__preview[data-v-38044d5d] {\n    background-color: rgba(255, 255, 255, 0.1);\n}\n}\n.header__menu .menu__preview[data-v-38044d5d] {\n  padding: 0;\n  height: 100%;\n  background-color: transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  transition: all 0.4s ease-in-out;\n}\n@media screen and (min-width: 768px) {\n.header__menu .menu__preview[data-v-38044d5d] {\n    padding: 2.25rem 0.75rem;\n}\n}\n.header__menu .menu__count[data-v-38044d5d] {\n  color: rgb(255, 255, 255);\n  background-color: #F22A2A;\n  border-radius: 0.75rem;\n  height: 1.25rem;\n  padding: 0 0.2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  transform: translate(-50%, calc(-50% + 0.125rem));\n  min-width: 1.25rem;\n}\n.header__menu .menu__count .count__text[data-v-38044d5d] {\n  font-size: 0.75rem;\n  line-height: 1rem;\n  text-overflow: ellipsis;\n  display: block;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.header__menu .menu__media[data-v-38044d5d] {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.header__menu .menu__media img[data-v-38044d5d],\n.header__menu .menu__media svg[data-v-38044d5d] {\n  width: 100%;\n  height: 100%;\n}\n.header__menu .menu__avatar[data-v-38044d5d] {\n  width: 3rem;\n  height: 3rem;\n  border-radius: 50%;\n  display: flex;\n  align-items: flex-start;\n  overflow: hidden;\n}\n.header__menu .menu__avatar[data-v-38044d5d]:not(:last-child) {\n  margin-right: 0.5rem;\n}\n.header__menu .menu__avatar img[data-v-38044d5d],\n.header__menu .menu__avatar svg[data-v-38044d5d] {\n  width: 100%;\n  height: 100%;\n}\n.header__menu .menu__action[data-v-38044d5d] {\n  width: 1rem;\n  height: 0.75rem;\n  display: flex;\n  align-items: flex-start;\n}\n.header__menu .menu__action img[data-v-38044d5d],\n.header__menu .menu__action svg[data-v-38044d5d] {\n  width: 100%;\n  height: 100%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

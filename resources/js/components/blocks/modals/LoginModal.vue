@@ -65,7 +65,6 @@ export default {
             if(response.data.code !== undefined && response.data.code == 0){
                 if (response.data.location)
                 {
-                    console.log(response.data.location)
                     location.href = response.data.location
                 }
                 else

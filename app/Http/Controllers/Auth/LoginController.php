@@ -31,7 +31,7 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse
      */
 //    public function __construct()
 //    {
@@ -61,11 +61,6 @@ class LoginController extends Controller
                 if (\Auth::attempt(['email' => $login, 'password' => $request_data['password']], $remember)){
 
                     $user = \Auth::user();
-                    if($user->status != 2){
-                        $this->logout(false);
-
-                        return response()->json( [ 'code' => 2, 'desc' => ['email'=> __('error.login_fail_active')]] );
-                    }
                     return response()->json( ['code' => 0, 'location' =>  '/' ]  );
 
 

@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Http\Requests\RegisterUserRequest;
+use Backpack\CRUD\Tests\Unit\Http\Requests\UserRequest;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+
 
 class RegisterController extends Controller
 {
@@ -39,6 +44,59 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function register()
+    {
+        $data = request()->all();
+        $validatorData = new RegisterUserRequest();
+        $validator = Validator::make(
+            $data,
+            $validatorData->rules(),
+            $validatorData->messages(),
+            $validatorData->attributes()
+        );
+
+        if (!$validator->fails()){
+            $request_data = $validator->safe()->only(['first_name', 'last_name', 'email', 'phone', 'password']);
+
+            $fields = [];
+            foreach($request_data as $itemKey => $item)
+            {
+                if($itemKey == 'password')
+                {
+                    $fields[$itemKey] = Hash::make($item);
+                }else if ($itemKey == 'phone'){
+                    $fields[$itemKey] = preg_replace('/^8/', '+7', $item, 1);
+                }else
+                {
+                    $fields[$itemKey] = $item;
+                }
+            }
+
+            $user = User::create(array_merge($fields,[
+                'is_admin' => 0
+            ]));
+
+            if(\Auth::attempt(['email' => $request_data['email'], 'password' => $request_data['password']])){
+                $user = \Auth::user();
+                return response()->json( ['code' => 0, 'location' =>  '/' ]  );
+            }
+
+
+        }else{
+            $messages = $validator->messages()->toArray();
+
+            $errorMessages = array();
+
+            foreach ($messages as $key=>$value){
+
+                $errorMessages[$key] = $value[0];
+
+            }
+
+            return response()->json( [ 'code' => 1, 'desc' => $errorMessages ] );
+        }
     }
 
     /**

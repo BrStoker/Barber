@@ -14,7 +14,7 @@ class AddImageToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('image')->after('status')->nullable(true)->default(null);
+            $table->string('image')->after('is_admin')->nullable(true)->default(null);
         });
     }
 

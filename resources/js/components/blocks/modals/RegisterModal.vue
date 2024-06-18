@@ -22,6 +22,7 @@ import DivElement from '@/js/components/elements/Div'
 import SvgElement from '@/js/components/elements/Svg'
 import FormInput from "@/js/components/elements/FormInput";
 import FormElement from '@/js/components/elements/Form'
+import Http from "@/js/classes/Http";
 
 import ComputedModalLayout from "@/js/computed/blocks/modals/ModalLayout.js";
 
@@ -34,14 +35,80 @@ export default {
         }
     },
     methods:{
-        ...ComputedModalLayout,
-        showForm(){
-            this.$store.commit('closeRegisterForm')
-        },
-        register(e){
-            e.preventDefault()
-            console.log(e)
+      ...Http,
+      ...ComputedModalLayout,
+      showForm(){
+        this.$store.commit('closeRegisterForm')
+      },
+      register(e){
+        e.preventDefault()
+        let error = this.validateForm();
+        if(!error){
+          let form = this.SchemasToFormData(this.schema)
+          this.sendRequest({
+            url: this.schema.action,
+            method: this.schema.method,
+            data: form,
+            success: this.registerSuccess,
+            error: this.registerError
+          })
+        }else{
+
         }
+      },
+      registerSuccess(response){
+        let data = response.data
+        if(data.code === 0 && _.has(data, 'location')){
+          location.href = data.location
+        }
+      },
+      registerError(response){
+        console.error(response)
+      },
+      validateForm() {
+        let error = false;
+
+        this.schema.steps.forEach(step => {
+          step.inputs.forEach(input => {
+            if (input.validate && !input.hidden) {
+              if (input.required && !input.value) {
+                input.error = 'Это поле обязательно для заполнения';
+                error = true;
+              } else {
+                input.error = '';
+              }
+
+              if (input.type === 'email' && !this.validateEmail(input.value)) {
+                input.error = 'Введите корректный адрес электронной почты';
+                error = true;
+              } else if (input.type === 'tel' && !this.validatePhone(input.value)) {
+                input.error = 'Введите корректный номер телефона';
+                error = true;
+              } else if (input.type === 'password' && input.name === 'password_confirm' && input.value !== this.getPasswordValue()) {
+                input.error = 'Пароли не совпадают';
+                error = true;
+              } else {
+                input.error = '';
+              }
+            }
+          });
+        });
+
+        return error;
+      },
+      validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+      },
+      validatePhone(phone) {
+        const re = /^[0-9\-\+]{9,15}$/;
+        return re.test(phone);
+      },
+      getPasswordValue() {
+        const passwordInput = this.schema.steps.flatMap(step => step.inputs).find(input => input.name === 'password');
+        return passwordInput ? passwordInput.value : '';
+      },
+
     },
     components:{
         DivElement,

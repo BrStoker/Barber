@@ -163,22 +163,6 @@ export default{
                     ]
                 },
             ]
-        },
-        // {
-        //     type: 'supportLink',
-        //     class: 'col, col_12',
-        //     inputs: [
-        //         {
-        //             send: false,
-        //             name: 'button',
-        //             placeholder: 'Обратиться в техподдержку',
-        //             required: true,
-        //             type: '',
-        //             inputType: 'supportLink',
-        //             value: 'Обратиться в техподдержку',
-        //             rules: []
-        //         }
-        //     ]
-        // }
+        }
     ]
 }
