@@ -767,9 +767,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_components_elements_Div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/components/elements/Div */ "./resources/js/components/elements/Div.vue");
 /* harmony import */ var _js_components_elements_Span__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/elements/Span */ "./resources/js/components/elements/Span.vue");
 /* harmony import */ var _js_classes_Http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/classes/Http */ "./resources/js/classes/Http.js");
+/* harmony import */ var _js_components_elements_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/elements/Link */ "./resources/js/components/elements/Link.vue");
+/* harmony import */ var _js_components_elements_Svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/elements/Svg */ "./resources/js/components/elements/Svg.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -779,6 +783,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       user: this.$store.state.data.app.user.data,
       title: 'Информация о записях',
+      addButton: '/images/svg/sprite.svg#courseAdd',
       schema: {
         url: '/get-appointments',
         method: 'GET',
@@ -798,7 +803,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   components: {
     DivElement: _js_components_elements_Div__WEBPACK_IMPORTED_MODULE_0__["default"],
-    SpanElement: _js_components_elements_Span__WEBPACK_IMPORTED_MODULE_1__["default"]
+    SpanElement: _js_components_elements_Span__WEBPACK_IMPORTED_MODULE_1__["default"],
+    LinkElement: _js_components_elements_Link__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SvgElement: _js_components_elements_Svg__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   methods: _objectSpread(_objectSpread({}, _js_classes_Http__WEBPACK_IMPORTED_MODULE_2__["default"]), {}, {
     getData: function getData() {
@@ -810,6 +817,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         success: this.confirmSuccess,
         error: this.handelErrorResponse
       });
+    },
+    addAppointment: function addAppointment(event) {
+      event.preventDefault();
+      console.log(event);
     },
     confirmSuccess: function confirmSuccess(response) {
       if (response.data.appointments.length !== 0) {
@@ -4090,11 +4101,26 @@ var render = function render() {
     attrs: {
       classCss: "appoinments"
     }
+  }, [_c("DivElement", {
+    attrs: {
+      classCss: "appointments_title"
+    }
   }, [_c("SpanElement", {
     attrs: {
       classCss: "title"
     }
-  }, [_vm._v(_vm._s(_vm.title))]), _c("table", {
+  }, [_vm._v(_vm._s(_vm.title))]), _c("LinkElement", {
+    attrs: {
+      classCss: "add_appointment_link, btn-primary",
+      href: "#",
+      onclick: _vm.addAppointment
+    }
+  }, [_c("SvgElement", {
+    attrs: {
+      image: _vm.addButton,
+      classCss: "add_appointment_image"
+    }
+  })], 1)], 1), _c("table", {
     staticClass: "table table-striped"
   }, [_c("tr", _vm._l(_vm.schema.cols, function (item, index) {
     return _c("td", {
@@ -10640,7 +10666,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.appoinments[data-v-446faf4e]{\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\n}\n.appoinments .title[data-v-446faf4e]{\r\n  font-size: 45px;\r\n  color: #99BAED;\r\n  font-weight: bold;\r\n  text-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);\n}\n.table_header[data-v-446faf4e]{\r\n  font-weight: bold;\n}\n.table-striped[data-v-446faf4e]{\r\n  max-height: 250px;\n}\n.error[data-v-446faf4e]{\r\n  color: red;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.appoinments[data-v-446faf4e]{\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\n}\n.appoinments .title[data-v-446faf4e]{\r\n  font-size: 45px;\r\n  color: #99BAED;\r\n  font-weight: bold;\r\n  text-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);\n}\n.appointments_title[data-v-446faf4e]{\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 0.5rem;\r\n  justify-content: space-between;\r\n  width: 100%;\n}\n.add_appointment_link[data-v-446faf4e]{\r\n  border-radius: 0.2em;\r\n  width: 2em;\r\n  height: 2em;\r\n  padding: 0.2em;\r\n  background-color: rgb(153, 186, 237);\r\n  color: #FBB400;\r\n  fill: #FBB400;\n}\n.add_appointment_image[data-v-446faf4e]{\r\n  fill: #FBB400;\n}\n.table_header[data-v-446faf4e]{\r\n  font-weight: bold;\n}\n.table-striped[data-v-446faf4e]{\r\n  max-height: 250px;\n}\n.error[data-v-446faf4e]{\r\n  color: red;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
