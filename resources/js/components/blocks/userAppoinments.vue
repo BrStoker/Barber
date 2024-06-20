@@ -119,6 +119,9 @@ export default {
   color: #FBB400;
   fill: #FBB400;
 }
+.add_appointment_link:hover{
+  box-shadow: 0px 5px 10px rgba(153, 186, 237, 0.5);
+}
 .add_appointment_image{
   fill: #FBB400;
 }
